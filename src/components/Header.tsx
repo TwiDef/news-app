@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { fetchWeatherApi } from 'openmeteo';
 import { formatDate } from '../helpers/formatDate';
 import { useGetCoords } from '../hooks/useGetCoords';
