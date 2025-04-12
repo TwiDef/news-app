@@ -1,5 +1,5 @@
-export const formatDate = (now: Date) => {
-  const months = [
+export const formatDate = (now: Date): string => {
+  const months: Array<string> = [
     'January',
     'February',
     'March',
@@ -13,7 +13,7 @@ export const formatDate = (now: Date) => {
     'November',
     'December']
 
-  const days = [
+  const days: Array<string> = [
     'Sunday',
     'Monday',
     'Tuesday',
