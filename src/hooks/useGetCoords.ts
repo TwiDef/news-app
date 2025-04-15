@@ -2,7 +2,7 @@ import React from "react";
 import { Iposition } from "../@types";
 
 export const useGetCoords = () => {
-  let [coords, setCoodrs] = React.useState<{ latitude: number, longitude: number } | undefined>()
+  let [position, setPosition] = React.useState<Iposition | undefined>()
   let [success, setSuccess] = React.useState<boolean>(false)
   let [fail, setFail] = React.useState<boolean>(false)
 
@@ -16,9 +16,8 @@ export const useGetCoords = () => {
     setFail(true)
   }
 
-  function successful(position: Iposition) {
-    let { latitude, longitude } = position.coords
-    setCoodrs({ latitude, longitude })
+  function successful(position: Iposition): void {
+    setPosition(position)
     setSuccess(true)
   }
 
@@ -28,5 +27,5 @@ export const useGetCoords = () => {
     }
   }, [])
 
-  return { coords, success, fail }
+  return { position, success, fail }
 }

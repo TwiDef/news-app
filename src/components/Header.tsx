@@ -4,10 +4,10 @@ import { useGetCoords } from '../hooks/useGetCoords';
 import { useGetWeather } from '../hooks/useGetWeather';
 
 const Header: React.FC = () => {
-  const { coords, success, fail } = useGetCoords()
-  console.log(coords, success, fail)
+  const { position, success, fail } = useGetCoords()
+  console.log(position, success, fail)
 
-  const { weatherInfo } = useGetWeather(coords)
+  const { weatherInfo } = useGetWeather(position?.coords)
   console.log(weatherInfo)
 
   return (
