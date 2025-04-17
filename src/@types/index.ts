@@ -11,7 +11,7 @@ export interface Iposition {
   timestamp: number
 }
 
-export interface IweatherCodes {
+export interface IweatherCode {
   code: number,
   status: string,
   img: string

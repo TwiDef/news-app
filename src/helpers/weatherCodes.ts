@@ -1,6 +1,6 @@
-import { IweatherCodes } from "../@types";
+import { IweatherCode } from "../@types";
 
-export const weatherCodes: ReadonlyArray<IweatherCodes> = [
+export const weatherCodes: ReadonlyArray<IweatherCode> = [
   {
     code: 0,
     status: "clear sky",
