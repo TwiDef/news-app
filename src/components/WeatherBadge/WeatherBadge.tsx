@@ -5,6 +5,8 @@ import { useGetWeather } from '../../hooks/useGetWeather';
 import { useGetCoords } from '../../hooks/useGetCoords';
 import Loader from '../Loader';
 
+import "./WeatherBadge.css";
+
 const WeatherBadge: React.FC = () => {
   const [weatherStatus, setWeatherStatus] = React.useState<IweatherCode>()
   const { position, success, fail } = useGetCoords()
@@ -20,8 +22,14 @@ const WeatherBadge: React.FC = () => {
 
   if (fail) {
     return (
-      <img className="w-10"
-        src="https://cdn-icons-png.flaticon.com/512/16171/16171591.png" alt="unknown-coords" />
+      <>
+        <div className="tooltip">
+          <img className="w-10"
+            src="https://cdn-icons-png.flaticon.com/512/16171/16171591.png"
+            alt="unknown-coords" />
+          <span className="tooltiptext">can't find you</span>
+        </div>
+      </>
     )
   }
 
