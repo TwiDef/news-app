@@ -20,7 +20,7 @@ const WeatherBadge: React.FC = () => {
 
   if (fail) {
     return (
-      <img style={{ width: "40px" }}
+      <img className="w-10"
         src="https://cdn-icons-png.flaticon.com/512/16171/16171591.png" alt="unknown-coords" />
     )
   }
@@ -31,27 +31,15 @@ const WeatherBadge: React.FC = () => {
 
   if (success) {
     return (
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        maxWidth: "120px",
-        lineHeight: "12px"
-      }}>
+      <div className=" flex flex-col items-center max-w-32 leading-3">
         <div>
           {weatherStatus?.img &&
-            <img style={{ width: "40px" }} src={weatherStatus.img} />}
+            <img className="w-10" src={weatherStatus.img} />}
         </div>
-        <span
-          style={{
-            fontSize: "15px",
-            textAlign: "center",
-            fontWeight: 500
-          }}>
+        <span className="text-xs text-center">
           {weatherStatus?.status && weatherStatus.status}
         </span>
-        <span
-          style={{ fontWeight: 600 }}>
+        <span className="font-bold">
           {(weatherInfo?.current.temperature2m)?.toFixed(1)} &deg;C
         </span>
       </div>

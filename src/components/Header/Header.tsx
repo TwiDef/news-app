@@ -8,9 +8,9 @@ const Header: React.FC = () => {
 
   return (
     <header
-      style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      className="flex items-center justify-between">
       <div>
-        <h1>{formatTitle(now)}</h1>
+        <h1 className="text-3xl font-bold">{formatTitle(now)}</h1>
         <p>{formatDate(now)}</p>
       </div>
       <WeatherBadge />
