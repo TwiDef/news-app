@@ -1,5 +1,6 @@
 import Container from './components/Container';
 import Header from './components/Header';
+import NewsBanner from './components/NewsBanner';
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
       </Container>
       <div className="my-6 border-1 border-gray-300 w-full"></div>
       <Container>
-        <main>main</main>
+        <main>
+          <NewsBanner />
+        </main>
       </Container>
     </>
   )

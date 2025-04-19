@@ -24,7 +24,7 @@ const WeatherBadge: React.FC = () => {
     return (
       <>
         <div className="tooltip">
-          <img className="w-10"
+          <img className="w-9"
             src="https://cdn-icons-png.flaticon.com/512/16171/16171591.png"
             alt="unknown-coords" />
           <span className="tooltiptext">can't find you</span>
