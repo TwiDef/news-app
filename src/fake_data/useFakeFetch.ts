@@ -4,7 +4,7 @@ import { fake_data } from './fake_data';
 export const useFakeFetch = () => {
   const [news, setNews] = React.useState({})
   const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState(false)
+  const [error, setError] = React.useState({})
 
   React.useEffect(() => {
     const fakeFetch = () => {
@@ -19,9 +19,9 @@ export const useFakeFetch = () => {
       setLoading(true)
       try {
         const res = await fakeFetch()
-        setNews(res)
+        setNews(res!)
       } catch (error) {
-        setError(error)
+        setError(error!)
       } finally {
         setLoading(false)
       }

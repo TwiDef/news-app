@@ -17,3 +17,15 @@ export interface IweatherCode {
   img: string
 }
 
+export interface Inew {
+  author: string,
+  category: Array<string>,
+  description: string,
+  id: string,
+  image: string,
+  language: string,
+  published: string,
+  title: string,
+  url: string
+}
+
