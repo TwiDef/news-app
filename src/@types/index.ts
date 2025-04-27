@@ -16,3 +16,4 @@ export interface IweatherCode {
   status: string,
   img: string
 }
+

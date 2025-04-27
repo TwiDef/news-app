@@ -3,26 +3,15 @@ import Container from './components/Container';
 import Header from './components/Header';
 import NewsBanner from './components/NewsBanner';
 import { useGetLatestNewsQuery } from './services/currentsApi';
-import { getNews } from './services/getNews';
-
+import { useFakeFetch } from './fake_data/useFakeFetch';
 
 const App: React.FC = () => {
+  /*   const { data } = useGetLatestNewsQuery({ type: "latest-news" })
+    console.log(data) */
 
-  const { data } = useGetLatestNewsQuery({ type: "latest-news" })
+  const { news, loading, error } = useFakeFetch()
 
-  console.log(data)
-
-  /*   React.useEffect(() => {
-      const fetchNews = async () => {
-        try {
-          const news = await getNews()
-          console.log(news)
-        } catch (error) {
-          console.log(error)
-        }
-      }
-      fetchNews()
-    }, []) */
+  console.log(news)
 
   return (
     <>
