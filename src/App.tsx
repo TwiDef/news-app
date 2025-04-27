@@ -1,14 +1,28 @@
+import React from 'react';
 import Container from './components/Container';
 import Header from './components/Header';
 import NewsBanner from './components/NewsBanner';
-import { useAppDispatch } from './hooks/useAppDispatch';
-import { useAppSelector } from './hooks/useAppSelector';
-import { increment } from './redux/slices/newsSlice';
+import { useGetLatestNewsQuery } from './services/currentsApi';
+import { getNews } from './services/getNews';
 
-function App() {
-  const { value } = useAppSelector(state => state.news)
-  const dispatch = useAppDispatch()
-  /* https://api.currentsapi.services/v1/ */
+
+const App: React.FC = () => {
+
+  const { data } = useGetLatestNewsQuery({ type: "latest-news" })
+
+  console.log(data)
+
+  /*   React.useEffect(() => {
+      const fetchNews = async () => {
+        try {
+          const news = await getNews()
+          console.log(news)
+        } catch (error) {
+          console.log(error)
+        }
+      }
+      fetchNews()
+    }, []) */
 
   return (
     <>
@@ -21,9 +35,6 @@ function App() {
           <NewsBanner />
         </main>
       </Container>
-
-      <button onClick={() => dispatch(increment())}>+</button>
-      <h2>{value}</h2>
     </>
   )
 }
