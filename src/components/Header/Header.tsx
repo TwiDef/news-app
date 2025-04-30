@@ -1,10 +1,11 @@
 import React from 'react';
 import { formatTitle } from '../../helpers/formatTitle';
 import { formatDate } from '../../helpers/formatDate';
+import { useAppSelector } from '../../hooks/useAppSelector';
 import WeatherBadge from '../WeatherBadge';
 
 const Header: React.FC = () => {
-  const now = new Date()
+  const { now } = useAppSelector(state => state.news)
 
   return (
     <header className="flex items-center justify-between pt-3">

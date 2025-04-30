@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState: { value: number } = {
-  value: 0
+interface InewsSlice {
+  value: number,
+  now: Date
+}
+
+const initialState: InewsSlice = {
+  value: 0,
+  now: new Date()
 }
 
 export const newsSlice = createSlice({

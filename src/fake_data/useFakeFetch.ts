@@ -4,8 +4,8 @@ import { IapiResponce } from "../@types";
 
 export const useFakeFetch = () => {
   const [data, setData] = React.useState<IapiResponce>()
-  const [loading, setLoading] = React.useState<boolean>(false)
-  const [error, setError] = React.useState<unknown>()
+  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [isError, setIsError] = React.useState<unknown>()
 
   React.useEffect(() => {
     const fakeFetch = () => {
@@ -17,19 +17,19 @@ export const useFakeFetch = () => {
     }
 
     const getData = async (): Promise<void> => {
-      setLoading(true)
+      setIsLoading(true)
       try {
         const res: unknown = await fakeFetch()
         setData(res as IapiResponce)
       } catch (error: unknown) {
-        setError(error)
+        setIsError(error)
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
 
     getData()
   }, [])
 
-  return { data, loading, error }
+  return { data, isLoading, isError }
 }
