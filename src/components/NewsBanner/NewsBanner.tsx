@@ -1,6 +1,14 @@
 import React from 'react';
+import { Inew } from '../../@types';
 
-const NewsBanner: React.FC = () => {
+type NewsBannerProps = {
+  leadNew: Inew | undefined
+}
+
+const NewsBanner: React.FC<NewsBannerProps> = ({ leadNew }) => {
+
+  console.log(leadNew)
+
   return (
     <div>
       {/*  <img

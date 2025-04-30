@@ -47,7 +47,7 @@ const WeatherBadge: React.FC = () => {
         <span className="text-xs text-center">
           {weatherStatus?.status && weatherStatus.status}
         </span>
-        <span className="font-bold">
+        <span className="max-sm:text-xs text-md font-bold">
           {(weatherInfo?.current.temperature2m)?.toFixed(1)} &deg;C
         </span>
       </div>

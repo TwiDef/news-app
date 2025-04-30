@@ -1,10 +1,11 @@
 import React from "react";
 import { fake_data } from './fake_data';
+import { IapiResponce } from "../@types";
 
 export const useFakeFetch = () => {
-  const [news, setNews] = React.useState({})
-  const [loading, setLoading] = React.useState(false)
-  const [error, setError] = React.useState({})
+  const [data, setData] = React.useState<IapiResponce>()
+  const [loading, setLoading] = React.useState<boolean>(false)
+  const [error, setError] = React.useState<unknown>()
 
   React.useEffect(() => {
     const fakeFetch = () => {
@@ -15,13 +16,13 @@ export const useFakeFetch = () => {
       })
     }
 
-    const getData = async () => {
+    const getData = async (): Promise<void> => {
       setLoading(true)
       try {
-        const res = await fakeFetch()
-        setNews(res!)
-      } catch (error) {
-        setError(error!)
+        const res: unknown = await fakeFetch()
+        setData(res as IapiResponce)
+      } catch (error: unknown) {
+        setError(error)
       } finally {
         setLoading(false)
       }
@@ -30,5 +31,5 @@ export const useFakeFetch = () => {
     getData()
   }, [])
 
-  return { news, loading, error }
+  return { data, loading, error }
 }

@@ -12,10 +12,10 @@ export const currentsApi = createApi({
   }),
   endpoints: (builder) => ({
 
-    getLatestNews: builder.query({
+    getNews: builder.query({
       query: ({ type }) => `v1/${type}`
     })
   })
 })
 
-export const { useGetLatestNewsQuery } = currentsApi 
+export const { useGetNewsQuery } = currentsApi 
