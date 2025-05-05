@@ -12,7 +12,7 @@ const App: React.FC = () => {
     console.log(data) */
 
   const { data, isLoading, isError } = useFakeFetch()
-  /* console.log(data) */
+  console.log(data)
 
   if (isLoading) {
     return <div className="w-full h-lvh flex items-center justify-center"><Loader /></div>
@@ -26,7 +26,7 @@ const App: React.FC = () => {
       <div className="my-6 border-1 border-gray-300 w-full"></div>
       <Container>
         <main>
-          <NewsBanner leadNew={data?.news[2]} />
+          <NewsBanner leadNew={data?.news[0]} />
         </main>
       </Container>
     </>

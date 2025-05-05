@@ -7,20 +7,20 @@ type NewsBannerProps = {
 }
 
 const NewsBanner: React.FC<NewsBannerProps> = ({ leadNew }) => {
+  let [bannerImg, setBannerImg] = React.useState<string>("https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg")
+
+  React.useEffect(() => {
+    if (leadNew?.image) {
+      setBannerImg(leadNew.image)
+    }
+  }, [leadNew])
 
   return (
     <div>
-      {
-        leadNew?.image ?
-          <img
-            className="w-full h-auto"
-            src={leadNew?.image}
-            alt="err" /> :
-          <img
-            className="w-full h-auto"
-            src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg"
-            alt="err-img" />
-      }
+      <img
+        className="w-full h-auto"
+        src={bannerImg}
+        alt="err-img" />
       <h3
         className="font-bold leading-6 mt-3 sm:text-2xl">
         {leadNew?.title}

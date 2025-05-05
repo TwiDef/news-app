@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface InewsSlice {
-  value: number,
-  now: Date
+  value: number
 }
 
 const initialState: InewsSlice = {
-  value: 0,
-  now: new Date()
+  value: 0
 }
 
 export const newsSlice = createSlice({

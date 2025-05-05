@@ -1,8 +1,7 @@
-import { useAppSelector } from "../hooks/useAppSelector";
 
 export const publishedTime = (past: Date): string => {
 
-  const { now } = useAppSelector(state => state.news)
+  const now: Date = new Date()
   const diff = (now.getTime() - past.getTime()) / 1000
 
   if (diff < 60) {
