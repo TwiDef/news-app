@@ -1,10 +1,10 @@
 import React from 'react';
 import { formatTitle } from '../../helpers/formatTitle';
 import { formatDate } from '../../helpers/formatDate';
+import { now } from '../../helpers/publishedTime';
 import WeatherBadge from '../WeatherBadge';
 
 const Header: React.FC = () => {
-  const now: Date = new Date()
 
   return (
     <header className="flex items-center justify-between pt-3">

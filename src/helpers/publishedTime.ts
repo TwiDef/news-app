@@ -1,7 +1,6 @@
 
+export const now: Date = new Date()
 export const publishedTime = (past: Date): string => {
-
-  const now: Date = new Date()
   const diff = (now.getTime() - past.getTime()) / 1000
 
   if (diff < 60) {

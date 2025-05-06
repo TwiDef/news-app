@@ -1,26 +1,17 @@
 import React from 'react';
 import { Inew } from '../../@types';
 import { publishedTime } from '../../helpers/publishedTime';
+import NewsBannerImage from '../NewsBannerImage';
 
 type NewsBannerProps = {
   leadNew: Inew | undefined
 }
 
 const NewsBanner: React.FC<NewsBannerProps> = ({ leadNew }) => {
-  let [bannerImg, setBannerImg] = React.useState<string>("https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg")
-
-  React.useEffect(() => {
-    if (leadNew?.image) {
-      setBannerImg(leadNew.image)
-    }
-  }, [leadNew])
 
   return (
     <div>
-      <img
-        className="w-full h-auto"
-        src={bannerImg}
-        alt="err-img" />
+      <NewsBannerImage bannerImg={leadNew?.image} newsId={leadNew?.id} />
       <h3
         className="font-bold leading-6 mt-3 sm:text-2xl">
         {leadNew?.title}

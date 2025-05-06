@@ -8,8 +8,8 @@ import Header from './components/Header';
 import Loader from './components/Loader';
 
 const App: React.FC = () => {
-  /*   const { data, isLoading, isError } = useGetNewsQuery({ type: "latest-news" })
-    console.log(data) */
+  /* const { data, isLoading, isError } = useGetNewsQuery({ type: "latest-news" }) */
+  /*   console.log(data) */
 
   const { data, isLoading, isError } = useFakeFetch()
   console.log(data)
