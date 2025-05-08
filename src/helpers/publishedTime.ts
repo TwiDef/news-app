@@ -1,5 +1,5 @@
-
 export const now: Date = new Date()
+
 export const publishedTime = (past: Date): string => {
   const diff = (now.getTime() - past.getTime()) / 1000
 
