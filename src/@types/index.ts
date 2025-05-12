@@ -17,7 +17,7 @@ export interface IweatherCode {
   img: string
 }
 
-export interface IapiResponce {
+export interface IapiResponse {
   news: Array<Inew>
   page: number
   status: string
