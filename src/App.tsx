@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetNewsQuery } from './services/currentsApi';
+import { useGetFrameNewsQuery, useGetNewsQuery } from './services/currentsApi';
 import { useFakeFetch } from './fake_data/useFakeFetch';
 import { Inew } from './@types';
 
@@ -14,7 +14,11 @@ const App: React.FC = () => {
   /* const { data, isLoading, isError } = useGetNewsQuery({ type: "latest-news" }) */
   /*   console.log(data) */
 
+  /*  const { data, isLoading, isError } = useGetFrameNewsQuery({ page_number: 1, page_size: 10 }) */
+
   const { data, isLoading, isError } = useFakeFetch()
+
+  console.log(data)
 
   return (
     <>
