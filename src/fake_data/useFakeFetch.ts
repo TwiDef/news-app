@@ -1,9 +1,9 @@
 import React from "react";
 import { fake_data } from './fake_data';
-import { IapiResponce } from "../@types";
+import { IapiResponse } from "../@types";
 
 export const useFakeFetch = () => {
-  const [data, setData] = React.useState<IapiResponce>()
+  const [data, setData] = React.useState<IapiResponse>()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isError, setIsError] = React.useState<unknown>()
 
@@ -20,7 +20,7 @@ export const useFakeFetch = () => {
       setIsLoading(true)
       try {
         const res: unknown = await fakeFetch()
-        setData(res as IapiResponce)
+        setData(res as IapiResponse)
       } catch (error: unknown) {
         setIsError(error)
       } finally {

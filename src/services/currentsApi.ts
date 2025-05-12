@@ -13,9 +13,16 @@ export const currentsApi = createApi({
   endpoints: (builder) => ({
 
     getNews: builder.query({
-      query: ({ type }) => `v1/${type}`
+      query: ({ type }: { type: string }) => {
+        return `v1/${type}`
+      }
+    }),
+    getFrameNews: builder.query({
+      query: ({ page_number, page_size }: { page_number: number, page_size: number }) => {
+        return `v1/search?page_number=${page_number}&page_size=${page_size}`
+      }
     })
   })
 })
 
-export const { useGetNewsQuery } = currentsApi 
+export const { useGetNewsQuery, useGetFrameNewsQuery } = currentsApi 
