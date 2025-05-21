@@ -7,29 +7,27 @@ import Container from './components/Container';
 import Header from './components/Header';
 import BannerSkeleton from './components/Skeletons/BannerSkeleton';
 import NewsList from './components/NewsList';
+import { useAppSelector } from './hooks/useAppSelector';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = React.useState<number>(1)
-  const totalPages: number = 10
-  const pageSize: number = 10
-
+  const { currentPage, totalPages, pageSize } = useAppSelector(state => state.news)
   const { data, isLoading, isError } = useGetFrameNewsQuery({ currentPage, pageSize })
 
-  const handleNextPage = (): void => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
+  /*   const handleNextPage = (): void => {
+      if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1)
+      }
+    } */
 
-  const handlePrevPage = (): void => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
-    }
-  }
-
-  const handlePageClick = (pageNumber: number): void => {
-    setCurrentPage(pageNumber)
-  }
+  /*   const handlePrevPage = (): void => {
+      if (currentPage > 1) {
+        setCurrentPage(currentPage - 1)
+      }
+    } */
+  /* 
+    const handlePageClick = (pageNumber: number): void => {
+      setCurrentPage(pageNumber)
+    } */
 
   /* const { data, isLoading, isError } = useGetNewsQuery({ type: "latest-news" }) */
   /*   console.log(data) */
@@ -48,12 +46,7 @@ const App: React.FC = () => {
             <NewsBanner data={data?.news[0]} />}
           <NewsList
             data={data}
-            totalPages={totalPages}
-            currentPage={currentPage}
             isLoading={isLoading}
-            handleNextPage={handleNextPage}
-            handlePrevPage={handlePrevPage}
-            handlePageClick={handlePageClick}
           />
         </main>
       </Container>
