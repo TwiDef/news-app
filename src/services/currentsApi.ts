@@ -18,8 +18,8 @@ export const currentsApi = createApi({
       }
     }),
     getFrameNews: builder.query({
-      query: ({ page_number, page_size }: { page_number: number, page_size: number }) => {
-        return `v1/search?page_number=${page_number}&page_size=${page_size}`
+      query: ({ currentPage, pageSize }: { currentPage: number, pageSize: number }) => {
+        return `v1/search?page_number=${currentPage}&page_size=${pageSize}`
       }
     })
   })
