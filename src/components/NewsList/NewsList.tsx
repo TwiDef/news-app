@@ -7,23 +7,10 @@ import Pagination from '../Pagination';
 
 type NewsListProps = {
   data: IapiResponse | undefined,
-  totalPages: number
   isLoading: boolean
-  currentPage: number
-  handleNextPage: Function
-  handlePrevPage: Function
-  handlePageClick: Function
 }
 
-const NewsList: React.FC<NewsListProps> = ({
-  data,
-  totalPages,
-  currentPage,
-  isLoading,
-  handleNextPage,
-  handlePrevPage,
-  handlePageClick
-}) => {
+const NewsList: React.FC<NewsListProps> = ({ data, isLoading }) => {
 
   return (
     <>
@@ -34,13 +21,7 @@ const NewsList: React.FC<NewsListProps> = ({
             return <li key={item.id}><NewsItem singleNew={item} /></li>
           })}
       </ul>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
-        handlePageClick={handlePageClick}
-      />
+      <Pagination />
     </>
   );
 };
