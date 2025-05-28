@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { Icategories } from '../@types';
 const API_KEY: string = import.meta.env.VITE_NEWS_API_KEY;
 
 export const currentsApi = createApi({
@@ -21,8 +22,13 @@ export const currentsApi = createApi({
       query: ({ currentPage, pageSize }: { currentPage: number, pageSize: number }) => {
         return `v1/search?page_number=${currentPage}&page_size=${pageSize}`
       }
+    }),
+    getCategories: builder.query<Icategories, null>({
+      query: () => {
+        return `v1/available/categories`
+      }
     })
   })
 })
 
-export const { useGetNewsQuery, useGetFrameNewsQuery } = currentsApi 
+export const { useGetNewsQuery, useGetFrameNewsQuery, useGetCategoriesQuery } = currentsApi 
