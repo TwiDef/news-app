@@ -11,7 +11,7 @@ const NewsItem: React.FC<NewsItemProps> = ({ singleNew }) => {
   return (
     <article className="flex items-center gap-4">
       <img
-        className="w-26 h-26 shrink-0 object-cover max-sm:w-16 max-sm:h-16"
+        className="w-26 h-26 shrink-0 object-cover max-sm:w-16 max-sm:h-16 bg-gray-300"
         src={singleNew?.image}
         alt="image error" />
 
