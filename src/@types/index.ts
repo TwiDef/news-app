@@ -35,3 +35,9 @@ export interface Inew {
   url: string
 }
 
+export interface Icategories {
+  categories: Array<string>,
+  description: string,
+  status: string
+}
+
