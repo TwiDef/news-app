@@ -9,8 +9,10 @@ const NewsBannerImage: React.FC<NewsBannerImageProps> = ({ bannerImg, newsId }) 
   let [img, setImg] = React.useState<string>("https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg")
 
   React.useEffect(() => {
-    if (bannerImg) {
+    if (bannerImg && bannerImg !== "None") {
       setImg(bannerImg)
+    } else {
+      setImg("https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg")
     }
   }, [newsId])
 
