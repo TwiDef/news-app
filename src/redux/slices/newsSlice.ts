@@ -4,14 +4,16 @@ interface InewsSlice {
   value: number,
   currentPage: number,
   totalPages: number,
-  pageSize: number
+  pageSize: number,
+  selectedCategory: string
 }
 
 const initialState: InewsSlice = {
   value: 0,
   currentPage: 1,
   totalPages: 10,
-  pageSize: 10
+  pageSize: 10,
+  selectedCategory: "All"
 }
 
 export const newsSlice = createSlice({
@@ -33,9 +35,17 @@ export const newsSlice = createSlice({
     },
     handlePageClick: (state, action: { payload: number, type: string }): void => {
       state.currentPage = action.payload
+    },
+    setSelectedCategory: (state, action: { payload: string, type: string }): void => {
+      state.selectedCategory = action.payload
     }
   }
 });
 
-export const { increment, handleNextPage, handlePrevPage, handlePageClick } = newsSlice.actions;
+export const {
+  increment,
+  handleNextPage,
+  handlePrevPage,
+  handlePageClick,
+  setSelectedCategory } = newsSlice.actions;
 export default newsSlice.reducer;

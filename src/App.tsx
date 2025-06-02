@@ -11,7 +11,7 @@ import NewsList from './components/NewsList';
 import Categories from './components/Categories';
 
 const App: React.FC = () => {
-  const { currentPage, pageSize } = useAppSelector(state => state.news)
+  const { currentPage, pageSize, selectedCategory } = useAppSelector(state => state.news)
   const { data, isLoading, isError } = useGetFrameNewsQuery({ currentPage, pageSize })
 
   return (
