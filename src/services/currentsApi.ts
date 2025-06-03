@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Icategories } from '../@types';
+import { NewsApiResponse, ParamsType } from './types';
 const API_KEY: string = import.meta.env.VITE_NEWS_API_KEY;
 
 export const currentsApi = createApi({
@@ -12,7 +13,7 @@ export const currentsApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getNews: builder.query({
+    getNews: builder.query<NewsApiResponse, ParamsType>({
       query: (params) => {
         const {
           page_number = 1,
