@@ -2,18 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface InewsSlice {
   value: number,
-  currentPage: number,
-  totalPages: number,
-  pageSize: number,
-  selectedCategory: string
+  page_number: number,
+  total_pages: number,
+  page_size: number,
+  category: string
 }
 
 const initialState: InewsSlice = {
   value: 0,
-  currentPage: 1,
-  totalPages: 10,
-  pageSize: 10,
-  selectedCategory: "All"
+  page_number: 1,
+  total_pages: 10,
+  page_size: 10,
+  category: "All"
 }
 
 export const newsSlice = createSlice({
@@ -24,20 +24,20 @@ export const newsSlice = createSlice({
       state.value += 1
     },
     handleNextPage: (state): void => {
-      if (state.currentPage < state.totalPages) {
-        state.currentPage + 1
+      if (state.page_number < state.total_pages) {
+        state.page_number + 1
       }
     },
     handlePrevPage: (state): void => {
-      if (state.currentPage > 1) {
-        state.currentPage - 1
+      if (state.page_number > 1) {
+        state.page_number - 1
       }
     },
     handlePageClick: (state, action: { payload: number, type: string }): void => {
-      state.currentPage = action.payload
+      state.page_number = action.payload
     },
     setSelectedCategory: (state, action: { payload: string, type: string }): void => {
-      state.selectedCategory = action.payload
+      state.category = action.payload
     }
   }
 });
