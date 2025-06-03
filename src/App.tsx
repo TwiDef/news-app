@@ -1,6 +1,5 @@
 import React from 'react';
-import { useGetFrameNewsQuery } from './services/currentsApi';
-/* import { useFakeFetch } from './fake_data/useFakeFetch'; */
+import { useGetNewsQuery } from './services/currentsApi';
 import { useAppSelector } from './hooks/useAppSelector';
 
 import NewsBanner from './components/NewsBanner';
@@ -11,8 +10,8 @@ import NewsList from './components/NewsList';
 import Categories from './components/Categories';
 
 const App: React.FC = () => {
-  const { currentPage, pageSize, selectedCategory } = useAppSelector(state => state.news)
-  const { data, isLoading, isError } = useGetFrameNewsQuery({ currentPage, pageSize })
+  const { page_number, page_size, category } = useAppSelector(state => state.news)
+  const { data, isLoading } = useGetNewsQuery({ page_number, page_size, category })
 
   return (
     <>

@@ -5,30 +5,36 @@ const API_KEY: string = import.meta.env.VITE_NEWS_API_KEY;
 export const currentsApi = createApi({
   reducerPath: "currentsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.currentsapi.services/",
+    baseUrl: "https://api.currentsapi.services/v1/",
     prepareHeaders: (headers) => {
 
       headers.set('authorization', API_KEY)
     },
   }),
   endpoints: (builder) => ({
-
     getNews: builder.query({
-      query: ({ type }: { type: string }) => {
-        return `v1/${type}`
-      }
-    }),
-    getFrameNews: builder.query({
-      query: ({ currentPage, pageSize }: { currentPage: number, pageSize: number }) => {
-        return `v1/search?page_number=${currentPage}&page_size=${pageSize}`
+      query: (params) => {
+        const {
+          page_number = 1,
+          page_size = 10,
+          category
+        } = params
+        return {
+          url: "search",
+          params: {
+            page_number,
+            page_size,
+            category: category === "All" ? null : category
+          }
+        }
       }
     }),
     getCategories: builder.query<Icategories, null>({
       query: () => {
-        return `v1/available/categories`
+        return `available/categories`
       }
     })
   })
 })
 
-export const { useGetNewsQuery, useGetFrameNewsQuery, useGetCategoriesQuery } = currentsApi 
+export const { useGetNewsQuery, useGetCategoriesQuery } = currentsApi 

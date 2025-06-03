@@ -6,28 +6,28 @@ import { handleNextPage, handlePageClick, handlePrevPage } from '../../redux/sli
 type PaginationProps = {}
 
 const Pagination: React.FC<PaginationProps> = ({ }) => {
-  const { currentPage, totalPages } = useAppSelector(state => state.news)
+  const { page_number, total_pages } = useAppSelector(state => state.news)
   const dispatch = useAppDispatch()
 
   React.useEffect(() => {
     window.scrollTo(0, 200)
-  }, [currentPage])
+  }, [page_number])
 
   return (
     <div className="flex gap-3 items-center justify-center">
       <button
         className="cursor-pointer disabled:text-gray-400"
-        disabled={currentPage <= 1}
+        disabled={page_number <= 1}
         onClick={() => dispatch(handlePrevPage())}
       >{"<"}</button>
 
       <div className="flex items-center justify-center gap-4"
-      >{[...Array(totalPages)].map((_, i) => {
+      >{[...Array(total_pages)].map((_, i) => {
         return (
           <button
             onClick={() => dispatch(handlePageClick(i + 1))}
             className="cursor-pointer disabled:text-gray-400"
-            disabled={i + 1 === currentPage}
+            disabled={i + 1 === page_number}
             key={i}>
             {i + 1}
           </button>
@@ -37,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ }) => {
 
       <button
         className="cursor-pointer disabled:text-gray-400"
-        disabled={currentPage >= totalPages}
+        disabled={page_number >= total_pages}
         onClick={() => dispatch(handleNextPage())}
       >{">"}</button>
     </div>
