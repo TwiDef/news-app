@@ -5,6 +5,7 @@ interface InewsSlice {
   page_number: number,
   total_pages: number,
   page_size: number,
+  keyword: string,
   category: string
 }
 
@@ -13,6 +14,7 @@ const initialState: InewsSlice = {
   page_number: 1,
   total_pages: 10,
   page_size: 10,
+  keyword: "",
   category: "All"
 }
 
@@ -38,6 +40,9 @@ export const newsSlice = createSlice({
     },
     setSelectedCategory: (state, action: { payload: string, type: string }): void => {
       state.category = action.payload
+    },
+    setKeyword: (state, action: { payload: string, type: string }) => {
+      state.keyword = action.payload
     }
   }
 });
@@ -47,5 +52,6 @@ export const {
   handleNextPage,
   handlePrevPage,
   handlePageClick,
-  setSelectedCategory } = newsSlice.actions;
+  setSelectedCategory,
+  setKeyword } = newsSlice.actions;
 export default newsSlice.reducer;

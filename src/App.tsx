@@ -8,6 +8,7 @@ import Header from './components/Header';
 import BannerSkeleton from './components/Skeletons/BannerSkeleton';
 import NewsList from './components/NewsList';
 import Categories from './components/Categories';
+import Search from './components/Search';
 
 const App: React.FC = () => {
   const { page_number, page_size, category } = useAppSelector(state => state.news)
@@ -21,6 +22,7 @@ const App: React.FC = () => {
       <div className="my-6 border-1 border-gray-300 w-full"></div>
       <Categories />
       <Container>
+        <Search />
         <main className="pb-3">
           {isLoading ?
             <BannerSkeleton /> :
