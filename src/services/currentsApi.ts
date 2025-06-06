@@ -18,14 +18,16 @@ export const currentsApi = createApi({
         const {
           page_number = 1,
           page_size = 10,
-          category
+          category,
+          keyword
         } = params
         return {
           url: "search",
           params: {
             page_number,
             page_size,
-            category: category === "All" ? null : category
+            category: category === "All" ? null : category,
+            keyword
           }
         }
       }

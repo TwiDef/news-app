@@ -9,10 +9,14 @@ import BannerSkeleton from './components/Skeletons/BannerSkeleton';
 import NewsList from './components/NewsList';
 import Categories from './components/Categories';
 import Search from './components/Search';
+import { useDebounce } from './hooks/useDebounce';
 
 const App: React.FC = () => {
-  const { page_number, page_size, category } = useAppSelector(state => state.news)
-  const { data, isLoading } = useGetNewsQuery({ page_number, page_size, category })
+  const { page_number, page_size, category, keyword } = useAppSelector(state => state.news)
+  const debouncedValue = useDebounce(keyword, 1500)
+  const { data, isLoading } = useGetNewsQuery({ page_number, page_size, category, keyword: debouncedValue })
+
+  console.log(debouncedValue)
 
   return (
     <>
