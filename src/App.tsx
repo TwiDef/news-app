@@ -2,6 +2,7 @@ import React from 'react';
 import { useGetNewsQuery } from './services/currentsApi';
 import { useAppSelector } from './hooks/useAppSelector';
 import { useDebounce } from './hooks/useDebounce';
+import { useResize } from './hooks/useResize';
 
 import NewsBanner from './components/NewsBanner';
 import Container from './components/Container';
@@ -13,9 +14,12 @@ import Search from './components/Search';
 import ErrorBanner from './components/ErrorBanner';
 
 const App: React.FC = () => {
+  const { md, lg, xl } = useResize()
   const { page_number, page_size, category, keyword } = useAppSelector(state => state.news)
   const debouncedKeyword = useDebounce(keyword, 1500)
   const { data, isLoading, isError } = useGetNewsQuery({ page_number, page_size, category, keyword: debouncedKeyword })
+
+  console.log(md, lg, xl)
 
   return (
     <>
