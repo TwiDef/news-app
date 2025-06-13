@@ -1,12 +1,13 @@
 import React from 'react';
 
 type Props = {
-  children: React.ReactNode
+  children: React.ReactNode,
+  marginAuto: boolean
 }
 
-const Container = ({ children }: Props) => {
+const Container = ({ children, marginAuto }: Props) => {
   return (
-    <div className="container md:w-3xl m-auto px-4">
+    <div className={`container md:w-3xl ${marginAuto && "m-auto"} px-4`}>
       {children}
     </div>
   );
