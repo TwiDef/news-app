@@ -1,18 +1,54 @@
 import React from 'react';
-import { NewsApiResponse } from '../../services/types';
+import { useGetLatestNewsQuery } from '../../services/currentsApi';
 import { Inew } from '../../@types';
 
 import Container from '../Container';
 import PublishedInfo from '../PublishedInfo';
+import ErrorBanner from '../ErrorBanner';
 
-type BlockLatestNewsProps = {
-  data: NewsApiResponse | undefined
-}
+type BlockLatestNewsProps = {}
 
-const BlockLatestNews: React.FC<BlockLatestNewsProps> = ({ data }) => {
+const BlockLatestNews: React.FC<BlockLatestNewsProps> = () => {
+  const { data, isLoading, isError } = useGetLatestNewsQuery(null)
+
+  if (isError) {
+    return (
+      <ul className="px-8 grid grid-cols-3 justify-self-center gap-x-3 gap-y-10 mt-17 max-h-full overflow-y-auto opacity-70">
+        {new Array(30).fill("empty-error-item").map((_, i: number) => {
+          return (
+            <li key={i}>
+              <article className="w-56 h-80">
+                <ErrorBanner />
+              </article>
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <ul className="px-8 grid grid-cols-3 justify-self-center gap-x-3 gap-y-10 mt-17 max-h-full overflow-y-auto">
+        {new Array(30).fill("empty-error-item").map((_, i: number) => {
+          return (
+            <li key={i}>
+              <article className="w-56 h-80 flex flex-col items-center gap-4">
+                <div
+                  className="w-56 h-56 shrink-0 object-cover max-sm:w-16 max-sm:h-16 bg-gray-300">
+                </div>
+                <h5 className="mt-5 font-bold text-xs max-xs:text-sm/8">Loading news title...</h5>
+              </article>
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+
   return (
     <Container marginAuto={false}>
-      <ul className="grid grid-cols-3 gap-x-2 gap-y-4 mt-17">
+      <ul className="pb-6 grid grid-cols-3 justify-self-center gap-x-3 gap-y-4 mt-17 max-h-full overflow-y-auto">
         {data?.news.map((item: Inew) => {
           return (
             <li key={item.id}>

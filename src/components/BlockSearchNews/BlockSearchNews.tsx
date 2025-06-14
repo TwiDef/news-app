@@ -1,5 +1,6 @@
 import React from 'react';
 import { NewsApiResponse } from '../../services/types';
+import { useResize } from '../../hooks/useResize';
 
 import Container from '../Container';
 import ErrorBanner from '../ErrorBanner';
@@ -15,8 +16,9 @@ type BlockSearchNewsProps = {
 }
 
 const BlockSearchNews: React.FC<BlockSearchNewsProps> = ({ data, isLoading, isError }) => {
+  const { xxl } = useResize()
   return (
-    <Container marginAuto={true}>
+    <Container marginAuto={xxl ? false : true}>
       {isError ?
         <ErrorBanner /> :
         <>

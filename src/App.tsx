@@ -25,9 +25,9 @@ const App: React.FC = () => {
       <Categories />
       {
         xxl ?
-          <div className="flex">
+          <div style={{ maxHeight: "2400px" }} className="flex justify-center">
             <BlockSearchNews data={data} isLoading={isLoading} isError={isError} />
-            <BlockLatestNews data={data} />
+            <BlockLatestNews />
           </div> :
           <BlockSearchNews data={data} isLoading={isLoading} isError={isError} />
       }
