@@ -5,6 +5,7 @@ export const useResize = () => {
   const [md, setMd] = React.useState<boolean>(false)
   const [lg, setLg] = React.useState<boolean>(false)
   const [xl, setXl] = React.useState<boolean>(false)
+  const [xxl, setXxl] = React.useState<boolean>(false)
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -22,8 +23,9 @@ export const useResize = () => {
   React.useEffect(() => {
     width > 768 && width < 1024 ? setMd(true) : setMd(false)
     width > 1024 && width < 1280 ? setLg(true) : setLg(false)
-    width > 1280 ? setXl(true) : setXl(false)
+    width > 1280 && width < 1600 ? setXl(true) : setXl(false)
+    width > 1600 ? setXxl(true) : setXxl(false)
   }, [width])
 
-  return { md, lg, xl }
+  return { md, lg, xl, xxl }
 }

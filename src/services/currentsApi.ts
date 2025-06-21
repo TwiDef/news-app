@@ -32,12 +32,17 @@ export const currentsApi = createApi({
         }
       }
     }),
+    getLatestNews: builder.query<NewsApiResponse, null>({
+      query: () => {
+        return "latest-news"
+      }
+    }),
     getCategories: builder.query<Icategories, null>({
       query: () => {
-        return `available/categories`
+        return "available/categories"
       }
     })
   })
 })
 
-export const { useGetNewsQuery, useGetCategoriesQuery } = currentsApi 
+export const { useGetNewsQuery, useGetLatestNewsQuery, useGetCategoriesQuery } = currentsApi 
